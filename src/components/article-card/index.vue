@@ -5,29 +5,27 @@
     <v-img class="white--text"
            :height="`${height}px`"
            :src="coverImage || defaultCoverImg">
-      <v-container fill-height
-                   fluid>
-        <v-layout>
-          <v-flex xs12
-                  align-end
-                  d-flex>
-            <span class="headline">{{ title }}</span>
-          </v-flex>
-        </v-layout>
-      </v-container>
     </v-img>
-    <v-card-text>
-      {{ desc }}
-    </v-card-text>
+    <v-card-title>
+      <div class="headline">{{ title }}</div>
+      <p>{{ desc }}</p>
+      <div>
+        <v-chip v-for="item in tags" :key="item.id"
+                color="primary" text-color="white">{{ item.tagName }}</v-chip>
+      </div>
+    </v-card-title>
     <v-card-actions>
       <v-btn icon>
         <v-icon medium
                 v-if="hasRead">visibility</v-icon>
       </v-btn>
+      <v-btn icon @click="clickStartBtn">
+        <v-icon medium :color="stars ? 'grey' : 'yellow'">start</v-icon>
+      </v-btn>
       <v-spacer></v-spacer>
       <v-btn flat
              class="blue--text"
-             @click="clickDetailBtn">Learn</v-btn>
+             @click="clickDetailBtn">学 习</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -49,6 +47,14 @@ export default {
     },
     coverImage: {
       type: String
+    },
+    tags: {
+      type: Array,
+      default: () => []
+    },
+    stars: {
+      type: Boolean,
+      default: false
     },
     hasRead: {
       type: Boolean,
@@ -73,6 +79,12 @@ export default {
         id: this.id,
         index: this.index
       });
+    },
+    clickStartBtn() {
+      this.$emit('clickStartBtn', {
+        id: this.id,
+        index: this.index
+      })
     }
   }
 };

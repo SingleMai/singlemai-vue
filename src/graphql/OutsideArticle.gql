@@ -1,7 +1,0 @@
-query findPagingOutsideArticle(input: { limit: 10, offset: 0 }) {
-  count
-  rows {
-    id
-    title
-  }
-}

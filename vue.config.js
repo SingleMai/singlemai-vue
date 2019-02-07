@@ -7,6 +7,7 @@ module.exports = {
   lintOnSave: true,
   chainWebpack: config => {
     config.resolve.alias.set('@views', resolve('src/views'));
+    config.resolve.alias.set('@graphql', resolve('src/graphql'));
     config.resolve.alias.set('@components', resolve('src/components'));
   }
 };
