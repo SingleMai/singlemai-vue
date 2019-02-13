@@ -6,6 +6,7 @@
            :height="`${height}px`"
            :src="coverImage || defaultCoverImg">
     </v-img>
+
     <v-card-title>
       <div class="headline">{{ title }}</div>
       <p>{{ desc }}</p>
@@ -14,12 +15,12 @@
                 color="primary" text-color="white">{{ item.tagName }}</v-chip>
       </div>
     </v-card-title>
+    
     <v-card-actions>
-      <v-btn icon>
-        <v-icon medium
-                v-if="hasRead">visibility</v-icon>
+      <v-btn icon v-if="hasRead">
+        <v-icon medium>visibility</v-icon>
       </v-btn>
-      <v-btn icon @click="clickStartBtn">
+      <v-btn v-if="isStars" icon @click="clickStartBtn">
         <v-icon medium :color="stars ? 'grey' : 'yellow'">start</v-icon>
       </v-btn>
       <v-spacer></v-spacer>
@@ -51,6 +52,10 @@ export default {
     tags: {
       type: Array,
       default: () => []
+    },
+    isStars: {
+      type: Boolean,
+      default: true
     },
     stars: {
       type: Boolean,

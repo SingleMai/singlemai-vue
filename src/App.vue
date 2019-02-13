@@ -12,8 +12,13 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer></v-spacer>
+
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn flat>
+        <v-btn flat :to="{ name: 'signin' }">登录</v-btn>
+      </v-toolbar-items>
+
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn flat :to="{ name: 'create-blog-article' }">
           写文章
           <v-menu bottom left offset-y open-on-hover>
             <v-icon slot="activator" dark>arrow_drop_down</v-icon>

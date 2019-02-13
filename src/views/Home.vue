@@ -1,9 +1,14 @@
 <template>
-  <p>1</p>
+  <router-view></router-view>
 </template>
-
 <script>
-export default {
-  components: {}
-}
+  export default {
+    name: '',
+    data() {
+      return {};
+    },
+  };
 </script>
+
+<style lang='scss' scoped='' type='text/css'>
+</style>

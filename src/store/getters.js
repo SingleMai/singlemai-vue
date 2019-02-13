@@ -1,1 +1,1 @@
-export const getAudioControlPath = (state, getters) => state.audioControlPath; // 获取语音中控的ip地址
+export const getUserInfo = (state, getters) => state.userInfo; // 获取登录后的用户信息

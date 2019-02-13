@@ -5,11 +5,13 @@ import {
   restartWebsockets
 } from 'vue-cli-plugin-apollo/graphql-client';
 
+import $constant from './constant';
+
 // Install the vue plugin
 Vue.use(VueApollo);
 
 // Name of the localStorage item
-const AUTH_TOKEN = 'apollo-token';
+const AUTH_TOKEN = $constant.LOCAL_STORAGE.USER_TOKEN;
 
 // Http endpoint
 const httpEndpoint =

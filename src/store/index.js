@@ -9,7 +9,7 @@ import mutations from './mutations';
 Vue.use(Vuex);
 
 const state = {
-  // allTags: [], // 系统中全部的标签
+  userInfo: null, // 用户登录信息
 };
 
 export default new Vuex.Store({
