@@ -43,7 +43,13 @@ export default {
         title
         coverImage
         desc
+        createdAt
+        updatedAt
         mainBody
+        category {
+            id
+            categoryName
+        }
         tags {
           id
           tagName

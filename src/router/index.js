@@ -85,6 +85,9 @@ export default new Router({
           component: blogArticleDetail
         }
       ]
+    },
+    {
+      path: '/backen',
     }
   ]
 });

@@ -14,7 +14,7 @@
                   :items="tagCategories"
                   :rules="rules.categoryId"
                   item-text="categoryName"
-                  item-value="id"
+                  item-value="categoryId"
                   label="标签所属分类"></v-select>
         </v-card-text>
         <v-card-actions>
@@ -59,6 +59,7 @@
           query {
             findAllTagCategory {
               id
+              categoryId
               categoryName
             }
           }

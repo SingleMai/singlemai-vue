@@ -5,15 +5,17 @@
         <v-container fluid class="pa-0">
           <h2>{{ blogArticleData.title }}</h2>
           <v-layout class="grey--text pt-2">
-            <!-- <v-icon class="mr-1" small>date_range</v-icon>
-            <p class="ma-0 caption">2018-02-21</p> -->
-            <s-article-caption icon="date_range" text="2018-02-21"></s-article-caption>
+            <s-article-caption icon="date_range" :text="blogArticleData.createdAt"></s-article-caption>
+            <v-divider class="mx-1" vertical></v-divider>
+            <s-article-caption icon="today" :text="blogArticleData.updatedAt"></s-article-caption>
+            <v-divider class="mx-1" vertical></v-divider>
+            <s-article-caption icon="folder_open" :text="blogArticleData.category.categoryName"></s-article-caption>
           </v-layout>
-          <v-layout>
+          <v-layout class="my-4">
             <div v-html="htmlBody"></div>
           </v-layout>
           <v-layout>
-            <v-chip v-for="item in (this.blogArticleData.tags || [])"
+            <v-chip v-for="item in (blogArticleData.tags || [])"
                     :key="item.id"
                     label>#{{ item.tagName }}</v-chip>
           </v-layout>

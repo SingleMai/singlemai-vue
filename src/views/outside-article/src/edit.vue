@@ -124,16 +124,16 @@
             mutation: gql`
               mutation createOutsideArticle ($input: Input_OutsideArticle!) {
                 createOutsideArticle(input: $input) {
-                  id
-                  title
-                  desc
-                  path
-                  coverImage
-                  hasRead
-                  stars
-                  source
+                    id
+                    title
+                    desc
+                    path
+                    coverImage
+                    hasRead
+                    stars
+                    source
+                  }
                 }
-              }
             `,
             // 参数
             variables: {
