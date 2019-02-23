@@ -3,10 +3,22 @@
     <v-alert :value="alert.isShow" :type="alert.type">
       {{ alert.msg }}
     </v-alert>
-    <strong class="title">撰写博客</strong>
+    <v-layout row align-center>
+      <strong class="title">撰写博客</strong>
+      <s-upload @files="getFileData" label="上传.md文件，快速创建博客"></s-upload>
+    </v-layout>
     <v-form ref="form">
       <v-layout row>
         <v-flex xs8>
+          <v-layout row justify-space-between>
+            <v-flex xs4>
+              <s-date-picker :date.sync="formData.createdAt"></s-date-picker>
+            </v-flex>
+            <v-flex xs4>
+              <s-date-picker label="更新日期" :date.sync="formData.updatedAt"></s-date-picker>
+            </v-flex>
+          </v-layout>
+
           <v-text-field v-model="formData.title"
                         :rules="rules.title"
                         :counter="30"
@@ -14,6 +26,7 @@
                         data-vv-name="title"
                         required
           ></v-text-field>
+
           <v-textarea v-model="formData.desc"
                       label="描述"
                       placeholder="选填项，默认会取文章的前面字数进行填写"
@@ -52,6 +65,7 @@
               <v-list-tile-title>添加文章标签</v-list-tile-title>
             </v-list-tile>
           </v-autocomplete>
+
         </v-flex>
         <v-flex xs4 pl-4>
           <v-text-field v-model="formData.coverImage"
@@ -76,6 +90,7 @@
 import query from '@graphql/';
 import TagEditForm from '@components/tag-edit-form/';
 import { error } from 'util';
+import gql from 'graphql-tag';
 
   export default {
     name: 'BlogArticleEdit',
@@ -151,6 +166,15 @@ import { error } from 'util';
           this.formData.tags = [];
         }
         this.formData.tags.push(data.id);
+      },
+      async getFileData(file) {
+        const data = await this.$apollo.mutate({
+          mutation: query.UPLOAD_BLOG_ARTILCE,
+          variables: {
+            file: file[0]
+          }
+        });
+        console.log(data);
       },
       createArticleTag() {
         this.isShowDialog = true;

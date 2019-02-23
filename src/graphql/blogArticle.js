@@ -67,5 +67,14 @@ export default {
         mainBody
       }
     }
+  `,
+  UPLOAD_BLOG_ARTILCE: gql`
+    mutation uploadBlogArticle($file: Upload!) {
+      uploadBlogArticle(file: $file) {
+        filename
+        mimetype
+        content
+      }
+    }
   `
 };

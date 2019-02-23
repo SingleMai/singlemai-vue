@@ -16,9 +16,14 @@ import { createProvider } from './vue-apollo';
 import articleCard from '@components/article-card/outside-article';
 import blogArticleItem from '@components/article-card/blog-article';
 import articleCaption from '@components/article-caption/';
+import sUpload from '@components/s-upload/';
+import sDatePicker from '@components/s-date-picker';
+
 Vue.component('s-article-card', articleCard);
 Vue.component('s-blog-article-item', blogArticleItem);
 Vue.component('s-article-caption', articleCaption);
+Vue.component('s-upload', sUpload);
+Vue.component('s-date-picker', sDatePicker);
 
 Vue.config.productionTip = false;
 Vue.prototype.$gql = $gql;
