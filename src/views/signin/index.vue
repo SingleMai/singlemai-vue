@@ -1,5 +1,6 @@
 <template>
-  <v-container fluid fill-height>
+  <div></div>
+  <!-- <v-container fluid fill-height>
     <v-layout align-center justify-center>
       <v-flex xs12 sm6 md8>
         <v-card class="elevation-12">
@@ -28,7 +29,7 @@
         </v-card>
       </v-flex>
     </v-layout>
-  </v-container>
+  </v-container> -->
 </template>
 <script>
   import { mapMutations } from 'vuex';
@@ -79,5 +80,5 @@
   };
 </script>
 
-<style lang='scss' scoped='' type='text/css'>
+<style lang='less' scoped='' type='text/css'>
 </style>

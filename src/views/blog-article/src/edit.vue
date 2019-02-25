@@ -1,5 +1,17 @@
 <template>
-  <v-container fluid>
+  <div class="blog-article-edit">
+    <h2 class="s-title">撰写博客</h2>
+    <!-- upload -->
+    <a-form :form="form" layout="horizontal">
+      <a-form-item v-bind="formItemLayout" label="文章标题">
+        <a-input placeholder="输入博客的标题内容"></a-input>
+      </a-form-item>
+      <a-form-item :wrapperCol="buttonItemLayout">
+        <a-button type="primary">保存</a-button>
+      </a-form-item>
+    </a-form>
+  </div>
+  <!-- <v-container fluid>
     <v-alert :value="alert.isShow" :type="alert.type">
       {{ alert.msg }}
     </v-alert>
@@ -46,7 +58,7 @@
               </v-list-tile-action>
               <v-list-tile-title>添加文章分类</v-list-tile-title>
             </v-list-tile> -->
-          </v-select>
+          <!-- </v-select>
 
           <v-autocomplete v-model="formData.tags"
                           :items="allTags"
@@ -84,7 +96,7 @@
     </v-form>
 
     <tag-edit-form @newTag="addNewTag" :isShow="isShowDialog"></tag-edit-form>
-  </v-container>
+  </v-container> -->
 </template>
 <script>
 import query from '@graphql/';
@@ -96,6 +108,15 @@ import gql from 'graphql-tag';
     name: 'BlogArticleEdit',
     data() {
       return {
+        form: this.$form.createForm(this),
+        formItemLayout: {
+          labelCol: { span: 3 },
+          wrapperCol: { span: 14 }
+        },
+        buttonItemLayout: {
+          span: 14,
+          offset: 4
+        },
         formData: {},
         allTags: [],
         allCategory: [],

@@ -1,18 +1,18 @@
 <template>
-  <v-flex xs12 offset-md>
-    <div v-for="(artile, index) in blogArticles"
-        :key="artile.title">
-      <s-blog-article-item :index="index"
-                           :title="artile.title"
-                           :desc="artile.desc"
-                           :category="artile.category"
-                           :coverImage="artile.coverImage"
-                           :createdAt="artile.createdAt"
-                           :updatedAt="artile.updatedAt"
-                           :isStars="false"
-                           @clickDetailBtn="getBlogArticleDetail"></s-blog-article-item>
-    </div>
-  </v-flex>
+  <div class="blog-article__list s-display-flex s-display-flex__direction-col">
+    <s-blog-article-card v-for="(artile, index) in blogArticles"
+                         :key="artile.id"
+                         class="blog-article-card__wrap s-my-card"
+                         :index="index"
+                         :title="artile.title"
+                         :desc="artile.desc"
+                         :category="artile.category"
+                         :coverImage="artile.coverImage"
+                         :createdAt="artile.createdAt"
+                         :updatedAt="artile.updatedAt"
+                         :isStars="false"
+                         @clickDetailBtn="getBlogArticleDetail"></s-blog-article-card>
+  </div>
 </template>
 
 <script>
@@ -58,7 +58,7 @@ export default {
   methods: {
     getBlogArticleDetail(index) {
       this.$router.push({
-        name: 'blog-article-detail',
+        name: 'blogArticleDetail',
         params: {
           id: this.blogArticles[index].id
         }
@@ -67,3 +67,4 @@ export default {
   }
 }
 </script>
+

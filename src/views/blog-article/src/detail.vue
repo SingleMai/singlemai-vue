@@ -1,28 +1,14 @@
 <template>
-  <v-flex xs12 offset-md>
-    <v-card class="my-2 pa-4">
-      <v-card-title>
-        <v-container fluid class="pa-0">
-          <h2>{{ blogArticleData.title }}</h2>
-          <v-layout class="grey--text pt-2">
-            <s-article-caption icon="date_range" :text="blogArticleData.createdAt"></s-article-caption>
-            <v-divider class="mx-1" vertical></v-divider>
-            <s-article-caption icon="today" :text="blogArticleData.updatedAt"></s-article-caption>
-            <v-divider class="mx-1" vertical></v-divider>
-            <s-article-caption icon="folder_open" :text="blogArticleData.category.categoryName"></s-article-caption>
-          </v-layout>
-          <v-layout class="my-4">
-            <div v-html="htmlBody"></div>
-          </v-layout>
-          <v-layout>
-            <v-chip v-for="item in (blogArticleData.tags || [])"
-                    :key="item.id"
-                    label>#{{ item.tagName }}</v-chip>
-          </v-layout>
-        </v-container>
-      </v-card-title>
-    </v-card>
-  </v-flex>
+  <div class="blog-article__detail s-display-flex s-display-flex__direction-col">
+    <a-card style="width: 1200px;borderTop: 0">
+      <h3 class="s-title s-text-center">{{ blogArticleData.title }}</h3>
+      <s-article-caption center :data="captionDataTop"></s-article-caption>
+      <s-article-caption center :data="captionDatadDown"></s-article-caption>
+      <div class="blog-article__content" v-html="htmlBody"></div>
+
+      <s-tag-line-list :data="blogArticleData.tags"></s-tag-line-list>
+    </a-card>
+  </div>
 </template>
 <script>
   import query from '@graphql/';
@@ -35,7 +21,7 @@
     },
     data() {
       return {
-        blogArticleData: {}
+        blogArticleData: {},
       };
     },
     props: {
@@ -45,6 +31,23 @@
       }
     },
     computed: {
+      category () {
+        return this.blogArticleData.category || {};
+      },
+      captionDataTop() {
+        return [
+          { icon: 'calendar', text: this.blogArticleData.createdAt },
+          { icon: 'schedule', text: this.blogArticleData.updatedAt },
+          { icon: 'folder', text: this.category.categoryName },
+        ]
+      },
+      captionDatadDown() {
+        return [
+          { icon: 'fle-word', text: 281 },
+          { icon: 'clock-circle', text: 281 },
+          { icon: 'eye', text: 281 },
+        ]
+      },
       htmlBody () {
         return marked(this.blogArticleData && this.blogArticleData.mainBody || '');
       }
@@ -64,5 +67,8 @@
   };
 </script>
 
-<style lang='scss' scoped='' type='text/css'>
+<style lang='less' scoped='' type='text/css'>
+.blog-article__content {
+  margin-top: 20px;
+}
 </style>

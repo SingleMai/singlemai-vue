@@ -1,0 +1,83 @@
+html,
+body {
+  font-family: @font-family;
+}
+
+// typography 风格 字体
+.s-headline {
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+  letter-spacing: normal;
+}
+.s-title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: @heading-color;
+}
+.s-text-center {
+  text-align: center;
+}
+
+// ===== color =====
+.s-col-text-white {
+  color: @white;
+}
+
+// ====== margin padding 边距 ======
+.s-my-card {
+  margin-top: @s-margin-block / 2;
+  margin-bottom: @s-margin-block / 2;
+}
+.s-mb-card {
+  margin-bottom: @s-margin-block;
+}
+
+.s-m0 {
+  margin: 0;
+}
+.s-mx-4 {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.s-my-4 {
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+.s-ml-3 {
+  margin-left: 3px;
+}
+
+// ====== display  ======
+.s-display-flex {
+  display: flex;
+  align-items: center;
+}
+.s-display-flex__justify-bt {
+  justify-content: space-between;
+}
+.s-display-flex__justify-center {
+  justify-content: center;
+}
+.s-display-flex__justify-end {
+  justify-content: flex-end;
+}
+.s-display-flex__direction-col {
+  flex-direction: column;
+}
+.s-display-flex__align-end {
+  align-items: flex-end;
+}
+
+// ====== link <a> ========
+.s-link-hover {
+  color: @link-color;
+  &:hover {
+    color: @link-hover-color;
+  }
+  &:active {
+    color: @link-active-color;
+  }
+}

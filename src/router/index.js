@@ -44,6 +44,18 @@ const blogArticleDetail = resolve => {
   });
 };
 
+// 管理后台
+const backenHome = resolve => {
+  import('@views/Backen').then(module => {
+    resolve(module);
+  });
+};
+const blogArticleEdit = resolve => {
+  import('@views/blog-article/src/edit').then(module => {
+    resolve(module);
+  })
+}
+
 Vue.use(Router);
 
 export default new Router({
@@ -59,7 +71,7 @@ export default new Router({
           component: Signin
         },
         {
-          name: 'blog-article',
+          name: 'blogArticle',
           path: '/blog-article',
           component: blogArticleIndex
         },
@@ -79,7 +91,7 @@ export default new Router({
           component: editBlogArticle
         },
         {
-          name: 'blog-article-detail',
+          name: 'blogArticleDetail',
           path: '/blog-article/detail/:id',
           props: true,
           component: blogArticleDetail
@@ -87,7 +99,16 @@ export default new Router({
       ]
     },
     {
+      name: 'BackenHome',
       path: '/backen',
+      component: backenHome,
+      children: [
+        {
+          name: 'BlogArticleEdit',
+          path: 'blog-article/edit',
+          component: blogArticleEdit
+        }
+      ]
     }
   ]
 });

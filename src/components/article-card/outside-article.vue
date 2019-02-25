@@ -1,34 +1,22 @@
 <template>
-  <v-card class="my-3"
-          disabled
-          hover>
-    <v-img class="white--text"
-           :height="`${height}px`"
-           :src="coverImage || defaultCoverImg">
-    </v-img>
-
-    <v-card-title>
-      <div class="headline">{{ title }}</div>
-      <p>{{ desc }}</p>
-      <div>
-        <v-chip v-for="item in tags" :key="item.id"
-                color="primary" text-color="white">{{ item.tagName }}</v-chip>
-      </div>
-    </v-card-title>
-    
-    <v-card-actions>
-      <v-btn icon v-if="hasRead">
-        <v-icon medium>visibility</v-icon>
-      </v-btn>
-      <v-btn v-if="isStars" icon @click="clickStartBtn">
-        <v-icon medium :color="stars ? 'grey' : 'yellow'">start</v-icon>
-      </v-btn>
-      <v-spacer></v-spacer>
-      <v-btn flat
-             class="blue--text"
-             @click="clickDetailBtn">学 习</v-btn>
-    </v-card-actions>
-  </v-card>
+  <a-card :style="{ width: cardWidth }" hoverable>
+    <img height="360px" :src="coverImage || defaultCoverImg"
+         alt="文章题图" slot="cover">
+    <a-card-meta :title="title">
+      <template slot="description">
+        <p>{{ desc }}</p>
+        <s-tag-line-list :data="tags"></s-tag-line-list>
+      </template>
+    </a-card-meta>
+    <div class="s-display-flex s-display-flex__justify-end">
+      <a-button-group>
+        <a-button type="primary" @click="clickStartBtn">
+          <a-icon :theme="stars ? 'outlined' : 'filled'" type="star"/>
+        </a-button>
+        <a-button type="primary" icon="paper-clip" @click="clickDetailBtn">跳转学习</a-button>
+      </a-button-group>
+    </div>
+  </a-card>
 </template>
 <script>
 export default {
@@ -53,10 +41,6 @@ export default {
       type: Array,
       default: () => []
     },
-    isStars: {
-      type: Boolean,
-      default: true
-    },
     stars: {
       type: Boolean,
       default: false
@@ -73,6 +57,10 @@ export default {
       type: String,
       default:
         'https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3445752448,3059857660&fm=26&gp=0.jpg'
+    },
+    cardWidth: {
+      type: String,
+      default: '650px'
     }
   },
   data() {

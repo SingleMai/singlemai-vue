@@ -1,24 +1,21 @@
 <template>
-  <v-flex xs12
-          md6
-          offset-md3>
-    <div v-for="(artile, index) in outsideArticles"
-         :key="artile.title">
-      <s-article-card :index="index"
-                      :title="artile.title"
-                      :desc="artile.desc"
-                      :stars="artile.stars"
-                      :hasRead="artile.hasRead"
-                      :coverImage="artile.coverImage"
-                      :tags="artile.tags"
-                      @clickDetailBtn="learnArticle"
-                      @clickStartBtn="starsArticle"></s-article-card>
-    </div>
-  </v-flex>
+  <div class="outside-article__list s-display-flex s-display-flex__direction-col">
+    <s-outside-article-card v-for="(artile, index) in outsideArticles"
+                            :key="artile.id"
+                            class="outside-article-card__wrap s-my-card"
+                            :index="index"
+                            :title="artile.title"
+                            :desc="artile.desc"
+                            :stars="artile.stars"
+                            :hasRead="artile.hasRead"
+                            :coverImage="artile.coverImage"
+                            :tags="artile.tags"
+                            @clickDetailBtn="learnArticle"
+                            @clickStartBtn="starsArticle"></s-outside-article-card>
+  </div>
 </template>
 <script>
 import query from '@graphql/';
-import gql from 'graphql-tag';
 
 export default {
   name: 'OutsideArticle',
@@ -79,4 +76,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped="" type="text/css"></style>
+<style lang="less" scoped="" type="text/css">
+  .outside-article__list {
+    margin: 0 auto;
+  }
+</style>

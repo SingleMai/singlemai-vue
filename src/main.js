@@ -1,7 +1,8 @@
 import Vue from 'vue';
-import './plugins/vuetify';
+import Antd from 'ant-design-vue';
 import $gql from './graphql/index.js';
 
+import './styles/index.less';
 // markdown 编辑器
 import mavonEditor from 'mavon-editor';
 import 'mavon-editor/dist/css/index.css';
@@ -13,23 +14,22 @@ import $storage from './storage';
 import $constant from './constant';
 import { createProvider } from './vue-apollo';
 
-import articleCard from '@components/article-card/outside-article';
-import blogArticleItem from '@components/article-card/blog-article';
-import articleCaption from '@components/article-caption/';
-import sUpload from '@components/s-upload/';
-import sDatePicker from '@components/s-date-picker';
-
-Vue.component('s-article-card', articleCard);
-Vue.component('s-blog-article-item', blogArticleItem);
-Vue.component('s-article-caption', articleCaption);
-Vue.component('s-upload', sUpload);
-Vue.component('s-date-picker', sDatePicker);
+// === 自定义组件
+import sBlogArticleCard from '@components/article-card/blog-article';
+import sOutsideArticleCard from '@components/article-card/outside-article';
+import sTagLineList from '@components/tag-line-list/';
+import sArticleCaption from '@components/article-caption/';
+Vue.component('s-blog-article-card', sBlogArticleCard);
+Vue.component('s-outside-article-card', sOutsideArticleCard);
+Vue.component('s-tag-line-list', sTagLineList);
+Vue.component('s-article-caption', sArticleCaption);
 
 Vue.config.productionTip = false;
 Vue.prototype.$gql = $gql;
 Vue.prototype.$storage = $storage;
 Vue.prototype.$constant = $constant;
 
+Vue.use(Antd);
 Vue.use(mavonEditor);
 
 new Vue({

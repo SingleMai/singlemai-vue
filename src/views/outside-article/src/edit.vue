@@ -1,9 +1,8 @@
 <template>
-  <v-container fluid>
-    <v-alert :value="alert.isShow" :type="alert.type">
-      {{ alert.msg }}
-    </v-alert>
-    <strong class="title">分享外链</strong>
+  <div>
+    
+  </div>
+  <!-- <v-container fluid>
     <v-form ref="form">
       <v-layout row>
         <v-flex xs8>
@@ -60,7 +59,7 @@
     </v-form>
 
     <tag-edit-form @newTag="addNewTag" :isShow="isShowDialog"></tag-edit-form>
-  </v-container>
+  </v-container> -->
 </template>
 <script>
   import gql from 'graphql-tag';
@@ -159,5 +158,5 @@
   };
 </script>
 
-<style lang='scss' scoped='' type='text/css'>
+<style lang='less' scoped='' type='text/css'>
 </style>
